@@ -1,3 +1,62 @@
-{
-    "status": []
-}
+[
+    {
+        "id": "status1",
+        "title": "Not started",
+        "tasks": [
+            {
+                "id": "task1",
+                "title": "Task 1",
+                "date": "date",
+                "status": "Not started",
+                "description": ""
+            },
+            {
+                "id": "task2",
+                "title": "Task 2",
+                "date": "date",
+                "status": "Not started",
+                "description": ""
+            },
+            {
+                "id": "task3",
+                "title": "Task 3",
+                "date": "date",
+                "status": "Not started",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "id": "status2",
+        "title": "Started",
+        "tasks": [
+            {
+                "id": "task1",
+                "title": "Task 1",
+                "date": "date",
+                "status": "Started",
+                "description": ""
+            }
+        ]
+    },
+    {
+        "id": "status3",
+        "title": "Completed",
+        "tasks": [
+            {
+                "id": "task1",
+                "title": "Task 1",
+                "date": "date",
+                "status": "Completed",
+                "description": ""
+            },
+            {
+                "id": "task2",
+                "title": "Task 2",
+                "date": "date",
+                "status": "Completed",
+                "description": ""
+            }
+        ]
+    }
+]
