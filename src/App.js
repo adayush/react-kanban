@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+
+import Kanban from "./components/kanban";
+import Page from "./components/page"
+import "./data.json"
+import "./index.css"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  if (!localStorage.getItem('data')) {
+    const data = {}
+    localStorage.setItem('data', JSON.stringify(data))
+  }
+
+  return <Routes>
+    <Route path='/' element={<Kanban />} />
+    <Route path='/edit/:id' element={<Page />} />
+  </Routes>
 }
 
 export default App;

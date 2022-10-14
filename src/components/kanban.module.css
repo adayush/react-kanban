@@ -1,0 +1,43 @@
+.kanban {
+    display: flex;
+    justify-content: space-between;
+}
+
+.status {
+    padding: 1rem;
+    min-width: 250px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    color: #989898;
+}
+.header div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+.title {
+    font-size: 1rem;
+}
+.title div {
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: black;
+    background-color: #fbccd1;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.task {
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: 0px 1px #e1e1e1;
+    padding: 5px;
+}
