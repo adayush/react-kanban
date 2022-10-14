@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Kanban from "./components/kanban";
-import Page from "./components/page"
+import Page from "./components/edit"
 import "./index.css"
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
   return <Routes>
     <Route path='/' element={<Kanban data={data} setData={setData} />} />
-    <Route path='/edit/:pageId/:taskId' element={<Page />} />
+    <Route path='/edit/:statusId/:taskId' element={<Page data={data} setData={setData} />} />
   </Routes>
 }
 

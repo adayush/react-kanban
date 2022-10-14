@@ -37,6 +37,12 @@
     border-radius: 4px;
     color: black;
 }
+.title div input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
 .status .title div {
     background-color: #dcdcdc;
 }

@@ -8,7 +8,7 @@ const NewButton = ({ data, setData, type, statusId }) => {
         status.tasks.push({
           id: Date.now(),
           title: "Untitled",
-          date: new Date().toDateString(),
+          date: new Date().toString(),
           status: statusId,
           description: ""
         })
