@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import style from "./edit.module.css"
 
-const Page = ({ data, setData }) => {
+const Page = ({ data, setData, deleteTask }) => {
   const { statusId, taskId } = useParams()
   const status = data?.findIndex(status => status.id === parseInt(statusId))
   const task = data[status].tasks?.findIndex(t => t.id === parseInt(taskId))
@@ -12,9 +12,9 @@ const Page = ({ data, setData }) => {
     status: data[status].title,
     description: data[status].tasks[task].description
   })
-  console.log(values)
+  //console.log(values)
   useEffect(() => {
-    console.log('changed')
+    //console.log('changed')
     const newData = [...data]
     newData[status].tasks[task].title = values.title
     newData[status].tasks[task].description = values.description
@@ -30,7 +30,7 @@ const Page = ({ data, setData }) => {
         [type]: event.target.value
       })
     } else if (type === 'description') {
-      console.log(event)
+      //console.log(event)
       setValues({
         ...values,
         [type]: event.target.value
@@ -42,7 +42,14 @@ const Page = ({ data, setData }) => {
     <div className={style.container}>
       <div className={style.main}>
         <div className={style.title}>
-          <h1><input value={values.title} onChange={(e) => handleChange(e, 'title')} /></h1>
+          <div>
+            <h1><input value={values.title} onChange={(e) => handleChange(e, 'title')} /></h1>
+            <p onClick={() => {
+              console.log('clicked')
+              deleteTask(statusId, taskId);
+              window.close()
+            }}>Delete</p>
+          </div>
           <span>{data[status].tasks[task].date}</span>
         </div>
         <br />
@@ -61,9 +68,7 @@ const Page = ({ data, setData }) => {
             {values.description}
           </span> */}
           <textarea className={style.textarea}
-            onChange={(e) => handleChange(e, 'description')}>
-            {values.description}
-          </textarea>
+            onChange={(e) => handleChange(e, 'description')} value={values.description} />
         </div>
       </div>
       

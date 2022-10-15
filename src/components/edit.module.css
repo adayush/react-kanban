@@ -19,6 +19,13 @@
 .title {
     padding-bottom: 2rem;
 }
+.title div {
+    display: flex;
+    justify-content: space-between;
+}
+.title div p {
+    cursor: pointer;
+}
 .title input {
     font-size: 2.5rem;
     font-weight: 900;

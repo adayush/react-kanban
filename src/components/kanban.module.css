@@ -1,5 +1,10 @@
-.temp {
-    width: 100%;
+.container {
+    margin: 2rem;
+}
+
+.divider {
+    margin: 2rem 0;
+    border: 1px solid rgb(230, 230, 230);
 }
 
 .kanban {
