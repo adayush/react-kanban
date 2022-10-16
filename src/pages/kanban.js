@@ -1,12 +1,19 @@
-import NewButton from "../components/newButton"
-import style from "./kanban.module.css"
 import { DragDropContext } from "react-beautiful-dnd"
+
 import Status from "../components/status"
+import NewButton from "../components/newButton"
+
+import style from "./kanban.module.css"
 
 const Kanban = ({ data, setData }) => {
+  const clearAll = () => {
+    localStorage.removeItem('data')
+    setData([])
+  }
 
   const onDragEnd = ({ source, destination, draggableId }) => {
     //console.log(source, destination, draggableId)
+    if (!destination) return
 
     // if dropped at same position
     if (source.droppableId === destination.droppableId
@@ -19,6 +26,7 @@ const Kanban = ({ data, setData }) => {
     const tmpTask = tmpData[s_statusIndex].tasks[source.index]
     // remove task from source
     tmpData[s_statusIndex].tasks.splice(source.index, 1)
+
     // if dropped in same status column
     if (source.droppableId === destination.droppableId) {
       tmpData[s_statusIndex].tasks.splice(destination.index, 0, tmpTask)
@@ -33,7 +41,14 @@ const Kanban = ({ data, setData }) => {
 
   return (
     <div className={style.container}>
-      <h1>Kanban Board - React.js</h1>
+      <div className={style.header}>
+        <h1>Kanban Board - React.js</h1>
+        <p onClick={clearAll}>Clear all and start again?</p>
+      </div>
+      <p>• <strong>Add status</strong> - adds a new status column</p>
+      <p>• <strong>New</strong> - adds a new task and opens the edit page</p>
+      <p>• Click on status name to edit it</p>
+      <p>• Click on a task to edit or delete it</p>
       <div className={style.divider}></div>
       <div className={style.kanban}>
         <DragDropContext onDragEnd={onDragEnd}>

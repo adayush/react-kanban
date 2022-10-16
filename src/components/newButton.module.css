@@ -11,3 +11,6 @@
     color: #aeaeae;
     cursor: pointer;
 }
+.task.empty:hover {
+    background-color: #f5f5f5;
+}

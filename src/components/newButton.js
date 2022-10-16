@@ -1,8 +1,9 @@
+import { useNavigate } from "react-router-dom"
 import style from "./newButton.module.css"
 
 const NewButton = ({ data, setData, type, statusIndex }) => {
+  const navigate = useNavigate()
   const newTask = () => {
-    let taskId = ""
     const newData = [...data]
     newData[statusIndex].tasks.push({
       id: Date.now().toString(),
@@ -14,13 +15,13 @@ const NewButton = ({ data, setData, type, statusIndex }) => {
 
     localStorage.setItem("data", JSON.stringify(newData));
     setData(newData)
-    window.open(`/edit/${statusIndex}/${newData[statusIndex].tasks.length -1}`, '_blank', 'noopen,noreferrer')
+    navigate(`/edit/${statusIndex}/${newData[statusIndex].tasks.length -1}`)
   }
 
   const newStatus = () => {
     const newData = data.concat({
       id: Date.now().toString(),
-      title: "Untitled",
+      title: `Status ${data.length+1}`,
       tasks: []
     })
     localStorage.setItem("data", JSON.stringify(newData));

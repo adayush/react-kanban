@@ -15,9 +15,10 @@ function App() {
 
   const deleteTask = (statusIndex, taskIndex) => {
     const tmp_data = [...data]
-    console.log(tmp_data[statusIndex].tasks)
+    // console.log(tmp_data[statusIndex].tasks)
+    
     tmp_data[statusIndex].tasks.splice(taskIndex, 1)
-    console.log(tmp_data[statusIndex].tasks)
+    // console.log(tmp_data[statusIndex].tasks)
     setData(tmp_data)
     localStorage.setItem('data', JSON.stringify(tmp_data))
   }

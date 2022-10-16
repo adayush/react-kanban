@@ -8,12 +8,26 @@
 .main {
     width: 100%;
     margin: auto;
+    margin-top: 4rem;
     padding: 2rem;
 }
 .main input {
     display: block;
     border: none;
     outline: none;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.backsvg, .binsvg {
+    max-height: 2rem;
+    opacity: 0.4;
+}
+.backsvg:hover, .binsvg:hover {
+    opacity: 0.8;
 }
 
 .title {
