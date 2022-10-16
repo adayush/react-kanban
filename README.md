@@ -4,13 +4,14 @@
 A Kanban Board with custom number of boards and tasks.
 
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Kanban Board](https://user-images.githubusercontent.com/50509197/196049853-243b2921-1b35-4322-9972-5112f41ff8ca.png)
 
 
 ## Tech Stack
 
 - React.js
 - [React-beautiful-dnd](https://www.npmjs.com/package/react-beautiful-dnd)
+
 
 
 ## Run Locally
