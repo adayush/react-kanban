@@ -25,4 +25,5 @@
 .kanban {
     display: flex;
     overflow-x: scroll;
+    min-height: 200px;
 }
