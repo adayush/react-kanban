@@ -48,11 +48,11 @@
     color: rgb(80, 80, 80);
 }
 
-.status p {
-    display: inline;
+.status select {
     padding: 2px 6px;
+    border: none;
+    outline: none;
     border-radius: 4px;
-    color: black;
     background-color: #fbccd1;
 }
 

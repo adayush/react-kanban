@@ -24,11 +24,14 @@
     font-weight: 500;
 }
 .title div {
+    max-width: 6rem;
+    overflow: hidden;
     padding: 2px 6px;
     border-radius: 4px;
     color: black;
 }
 .title div input {
+    width: 100%;
     border: none;
     outline: none;
     background-color: transparent;
