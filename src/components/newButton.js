@@ -1,35 +1,31 @@
-import style from "./kanban.module.css"
+import style from "./newButton.module.css"
 
-const NewButton = ({ data, setData, type, statusId }) => {
+const NewButton = ({ data, setData, type, statusIndex }) => {
   const newTask = () => {
     let taskId = ""
-    const newData = data.map(status => {
-      if (status.id === statusId) {
-        status.tasks.push({
-          id: Date.now(),
-          title: "Untitled",
-          date: new Date().toString(),
-          status: statusId,
-          description: ""
-        })
-        taskId = status.tasks[status.tasks.length -1].id
-      }
-      return status
+    const newData = [...data]
+    newData[statusIndex].tasks.push({
+      id: Date.now().toString(),
+      title: "Untitled",
+      date: new Date().toString(),
+      status: data[statusIndex].id,
+      description: ""
     })
+
     localStorage.setItem("data", JSON.stringify(newData));
     setData(newData)
-    window.open(`/edit/${statusId}/${taskId}`, '_blank', 'noopen,noreferrer')
+    window.open(`/edit/${statusIndex}/${newData[statusIndex].tasks.length -1}`, '_blank', 'noopen,noreferrer')
   }
 
   const newStatus = () => {
     const newData = data.concat({
-      id: Date.now(),
+      id: Date.now().toString(),
       title: "Untitled",
       tasks: []
     })
     localStorage.setItem("data", JSON.stringify(newData));
     setData(newData)
-    console.log(data)
+    //console.log(data)
   }
 
   if (type === "status") {

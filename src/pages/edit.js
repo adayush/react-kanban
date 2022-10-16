@@ -3,25 +3,23 @@ import { useParams } from "react-router-dom"
 import style from "./edit.module.css"
 
 const Page = ({ data, setData, deleteTask }) => {
-  const { statusId, taskId } = useParams()
-  const status = data?.findIndex(status => status.id === parseInt(statusId))
-  const task = data[status].tasks?.findIndex(t => t.id === parseInt(taskId))
-
+  const { statusIndex, taskIndex } = useParams()
+  console.log(statusIndex, taskIndex)
   const [values, setValues] = useState({
-    title: data[status].tasks[task].title,
-    status: data[status].title,
-    description: data[status].tasks[task].description
+    title: data[statusIndex].tasks[taskIndex].title,
+    status: data[statusIndex].title,
+    description: data[statusIndex].tasks[taskIndex].description
   })
   //console.log(values)
   useEffect(() => {
     //console.log('changed')
     const newData = [...data]
-    newData[status].tasks[task].title = values.title
-    newData[status].tasks[task].description = values.description
+    newData[statusIndex].tasks[taskIndex].title = values.title
+    newData[statusIndex].tasks[taskIndex].description = values.description
     setData(newData)
     localStorage.setItem('data', JSON.stringify(data))
     // newData[status]
-  }, [values, status, task])
+  }, [values, statusIndex, taskIndex])
 
   const handleChange = (event, type) => {
     if (type === 'title') {
@@ -46,11 +44,11 @@ const Page = ({ data, setData, deleteTask }) => {
             <h1><input value={values.title} onChange={(e) => handleChange(e, 'title')} /></h1>
             <p onClick={() => {
               console.log('clicked')
-              deleteTask(statusId, taskId);
+              deleteTask(statusIndex, taskIndex);
               window.close()
             }}>Delete</p>
           </div>
-          <span>{data[status].tasks[task].date}</span>
+          <span>{data[statusIndex].tasks[taskIndex].date}</span>
         </div>
         <br />
         <div className={style.status}>
