@@ -4,16 +4,44 @@ import Status from "../components/status"
 import NewButton from "../components/newButton"
 
 import style from "./kanban.module.css"
+import { useState } from "react"
 
 const Kanban = ({ data, setData }) => {
+  //const [highlighted, setHighlighted] = useState()
   const clearAll = () => {
     localStorage.removeItem('data')
     setData([])
   }
 
+  let prevHover = 0
+
+  const onDragUpdate = ({ destination }) => {
+    if (!destination) {
+      return
+    }
+    // data-rbd-droppable-id="1665937101885"
+    if (prevHover !== 0) {
+      const oldParent = document.querySelector(`[data-rbd-droppable-id="${prevHover}"]`).parentElement
+      oldParent.classList.remove("highlight")
+    }
+
+    const parent = document.querySelector(`[data-rbd-droppable-id="${destination.droppableId}"]`).parentElement
+    // add the css class
+    parent.classList.add("highlight")
+
+    // update the state
+    //setHighlighted(parent)
+    prevHover = destination.droppableId
+
+    // console.log(parent)
+  }
+
   const onDragEnd = ({ source, destination, draggableId }) => {
     //console.log(source, destination, draggableId)
     if (!destination) return
+
+    const oldParent = document.querySelector(`[data-rbd-droppable-id="${prevHover}"]`).parentElement
+    oldParent.classList.remove("highlight")
 
     // if dropped at same position
     if (source.droppableId === destination.droppableId
@@ -51,7 +79,7 @@ const Kanban = ({ data, setData }) => {
       <p>• Click on a task to edit or delete it</p>
       <div className={style.divider}></div>
       <div className={style.kanban}>
-        <DragDropContext onDragEnd={onDragEnd}>
+        <DragDropContext onDragEnd={onDragEnd} onDragUpdate={onDragUpdate}>
           {data?.map((status, statusIndex) => (
             <Status
               key={status.id}
